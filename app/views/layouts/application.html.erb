@@ -10,18 +10,7 @@
     <![endif]-->
   </head>
   <body>
-    <div class="navbar navbar-inverse">
-      <div class="navbar">
-        <div class="navbar-inner">
-          <%= link_to "sample app", '#', id: "logo" %>
-          <ul class="nav">
-            <li><%= link_to "Home",    '#' %></li>
-            <li><%= link_to "Help",    '#' %></li>
-            <li><%= link_to "Sign in", '#' %></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
     </div>
