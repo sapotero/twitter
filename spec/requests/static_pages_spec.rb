@@ -25,7 +25,7 @@ describe "Static pages" do
     end
 
     it "should include the base title" do
-      full_title("foo").should =~ /^Twitter/
+      full_title("Twitter").should =~ /^Twitter/
     end
 
     it "should not include a bar for the home page" do
@@ -43,7 +43,7 @@ describe "Static pages" do
     end
 
     it "should include the base title" do
-      full_title("foo").should =~ /^Twitter/
+      full_title("Twitter").should =~ /^Twitter/
     end
 
     it "should not include a bar for the home page" do
@@ -61,7 +61,7 @@ describe "Static pages" do
     end
 
     it "should include the base title" do
-      full_title("foo").should =~ /^Twitter/
+      full_title("Twitter").should =~ /^Twitter/
     end
 
     it "should not include a bar for the home page" do
