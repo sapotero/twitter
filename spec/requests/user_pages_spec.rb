@@ -64,4 +64,55 @@ describe "User pages" do
     end
   end
 
+  describe "edit" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit edit_user_path(user) }
+
+    describe "page" do
+      it { should have_selector('h1',    text: "Update your profile") }
+      # it { should have_selector('title', text: "Edit user") }
+      it { should have_link('change', href: 'http://gravatar.com/emails') }
+      
+      it "should include the page title" do
+        full_title(user.name).should match('Edit user')
+      end
+
+      it "should include the base title" do
+        full_title("Twitter").should =~ /^Twitter/
+      end
+
+      it "should not include a bar for the home page" do
+        full_title("").should_not =~ /\|/
+      end
+    end
+
+    describe "with valid information" do
+      let(:new_name)  { "New Name" }
+      let(:new_email) { "new@example.com" }
+      before do
+        fill_in "Name",             with: new_name
+        fill_in "Email",            with: new_email
+        fill_in "Password",         with: user.password
+        fill_in "Confirm Password", with: user.password
+        click_button "Save changes"
+      end
+
+      it "should include the page title" do
+        full_title(user.name).should match(user.name)
+      end
+
+      it "should include the base title" do
+        full_title("Twitter").should =~ /^Twitter/
+      end
+
+      it "should not include a bar for the home page" do
+        full_title("").should_not =~ /\|/
+      end
+      it { should have_selector('div.alert.alert-success') }
+      it { should have_link('Sign out', href: signout_path) }
+      specify { user.reload.name.should  == new_name }
+      specify { user.reload.email.should == new_email }
+    end
+  end
+
 end
