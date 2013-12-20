@@ -1,11 +1,20 @@
 require 'spec_helper'
 
-describe "Users" do
-  describe "GET /users" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get users_path
-      response.status.should be(200)
+describe User do
+
+  it { should respond_to(:admin) }
+  it { should respond_to(:authenticate) }
+
+  it { should be_valid }
+  it { should_not be_admin }
+
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
     end
+
+    it { should be_admin }
   end
+
 end
