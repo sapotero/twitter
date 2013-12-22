@@ -51,6 +51,7 @@ gem 'protected_attributes'
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
 
+gem "puma"
 # Use unicorn as the app server
 # gem 'unicorn'
 

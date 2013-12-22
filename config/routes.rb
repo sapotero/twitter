@@ -1,7 +1,7 @@
 Twitter::Application.routes.draw do
   
-  resources :microposts
   resources :sessions, only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
   resources :users
 
   root 'static_pages#home'

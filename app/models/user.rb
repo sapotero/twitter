@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
-  has_many :microposts
+  has_many :microposts, dependent: :destroy
 
   validates :name, length: { minimum: 3, maximum: 50 }, presence: true
   validates :password, presence: true, length: { minimum: 6 }
